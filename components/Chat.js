@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,SafeAreaView } from 'react';
 import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text, Button } from 'native-base';
 import user from '../assets/user.png'
 import {
@@ -9,6 +9,7 @@ import {
 } from 'react-native'
 import ChatScreen from './ChatScreen';
 import Data from '../components/Data'
+import Tabscreen from './Tabscreen'
 export default class Chat extends React.Component {
   constructor(props) {
     super(props);
@@ -34,10 +35,11 @@ export default class Chat extends React.Component {
   render() {
    
     return (
+      
       <Container>
         
          <Content>
-        
+       
          <List 
          dataArray={this.state.data}
            renderRow={(item)=>{
@@ -45,8 +47,9 @@ export default class Chat extends React.Component {
            }}
          />
            
-          
+           
          </Content>
+         
        </Container>
     );
   }

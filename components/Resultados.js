@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,SafeAreaView } from 'react';
 import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text, } from 'native-base';
 import {Image,View} from 'react-native';
 import user from '../assets/user.png'
@@ -24,6 +24,7 @@ export default class Resultados extends Component {
   }
   render() {
     return (
+      
       <Container>
         
         <Content>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, ActivityIndicator, View, } from 'react-native';
+import { FlatList, ActivityIndicator, View,SafeAreaView } from 'react-native';
 import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text, Button } from 'native-base';
 import Constants from 'expo-constants';
 import Agendadata from './Agendadata'

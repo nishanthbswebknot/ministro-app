@@ -4,6 +4,9 @@
     "slug": "ministro-mobile-app",
     "privacy": "public",
     "sdkVersion": "36.0.0",
+    "android": {
+      "package": "com.WEBKNOT.ministro"
+    },
     "platforms": [
       "ios",
       "android",
@@ -24,7 +27,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.WEBKNOT.ministro"
     }
   }
 }
