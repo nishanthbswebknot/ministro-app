@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import ChatScreen from './ChatScreen';
 import Data from '../components/Data'
-import Tabscreen from './Tabscreen'
+
 export default class Chat extends React.Component {
   constructor(props) {
     super(props);
@@ -41,6 +41,7 @@ export default class Chat extends React.Component {
          <Content>
        
          <List 
+         
          dataArray={this.state.data}
            renderRow={(item)=>{
              return <Data navigation={this.props.navigation} data={item}/>

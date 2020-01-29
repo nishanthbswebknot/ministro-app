@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Header, Tab, Tabs, ScrollableTab,Title ,Left,Right, Thumbnail,Button,Icon ,alert} from 'native-base';
+import { Container, Header, Tab, Tabs, ScrollableTab,Title ,Left,Right, Thumbnail,Button,Icon ,alert,safe,Item,Input} from 'native-base';
 import Agenda from './Agenda';
 import Resultados from './Resultados';
 import Chat from './Chat';
+
 import { StatusBar,SafeAreaView ,Modal,View,Text,TouchableHighlight,Image} from "react-native";
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
@@ -15,15 +16,11 @@ export default class TabsScrollableExample extends Component {
     this.state = {
       isReady: false,
       modalVisible: false,
-      searchTerm: ''
+      searchTerm: '',
+      seachbar:true
     };
   }
-  searchUpdated(term) {
-    this.setState({ searchTerm: term })
-  }
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
-  }
+  
   async componentDidMount() {
     await Font.loadAsync({
       Roboto: require('native-base/Fonts/Roboto.ttf'),
@@ -37,39 +34,27 @@ export default class TabsScrollableExample extends Component {
       return <AppLoading />;
     }
     return (
+      <SafeAreaView style={{flex:1,marginTop:StatusBar.currentHeight}}>
       <Container>
-      <StatusBar hidden={true} />
-
-      <Modal
-          animationType="slide"
-          transparent={false}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-          }}>
-          <View style={{marginTop: 22}}>
-            <View>
-              
-
-              <TouchableHighlight
-                onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
-                }}>
-                <Image
-                  style={{ width: 20, height: 20 }}
-                  source={require("../assets/back-black.png")}
-                />
-              </TouchableHighlight>
-              
-            </View>
-          </View>
-        </Modal>
-        <Header style={{backgroundColor:'#075E55'}}><Title style={{color:'white',margin:13}}>Governo Bolsonaro</Title><Right>
-            <Button transparent onPress={()=>{this.setModalVisible(true);}}>
+      
+      
+        {this.state.seachbar?<Header style={{backgroundColor:'#075E55'}}><Title style={{color:'white',margin:13}}>Governo Bolsonaro</Title><Right>
+            <Button transparent >
             
               <Icon style={{color:'white'}}name="search" />
             </Button>
-          </Right></Header>
+          </Right></Header>:<Header searchBar rounded style={{backgroundColor:'#075E55'}}>
+          <Item style={{flex:1}}>
+            <Icon name="ios-search"  />
+            <Input placeholder="Type here" />
+            
+            <Button transparent onPress={()=>this.setState({seachbar:true})}>
+          <Icon transparent style={{color:'black'}} name="ios-close" />
+          </Button>
+          </Item>
+          
+          
+        </Header>}
         <Tabs tabBarUnderlineStyle={{backgroundColor:'white'}}>
         <Tab heading="CHAT" tabStyle={{backgroundColor:'#075E55'}} activeTabStyle={{backgroundColor:'#075E55'}} textStyle={{color:'white'}} activeTextStyle={{color:'white'}}>
             <Chat navigation={this.props.navigation}/>
@@ -83,7 +68,7 @@ export default class TabsScrollableExample extends Component {
           </Tab>
 
         </Tabs>
-      </Container>
+      </Container></SafeAreaView>
     );
   }
 }

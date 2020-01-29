@@ -24,8 +24,8 @@ class Data extends Component {
                     style={{flexDirection:"row"}}
                     onPress={() =>
                       this.props.navigation.navigate("ChatScreen",{ 
-           name: this.data.Name 
-         } )}
+           name: this.data.Name,image:this.data.Image
+         })}
                 >
               <Left>
                <Thumbnail style={{width: 40, height: 40, borderRadius: 30/2}} source={{uri:this.data.Image} }/> 
